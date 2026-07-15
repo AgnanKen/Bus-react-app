@@ -4,6 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import AddBus from './components/AddBus'
+import ViewBus from './components/ViewBus'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <AddBus/>
+      <ViewBus/>
     </>
   )
 }
