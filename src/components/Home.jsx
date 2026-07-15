@@ -1,63 +1,85 @@
 import React from "react";
 import Navbar from "./Navbar";
 
-
 const Home = () => {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
 
-      <div className="container mt-5">
+      <div className="home-container">
 
-        <div className="text-center mb-5">
-          <h1 className="text-primary">
+        {/* Hero Section */}
+
+        <div className="hero-section">
+
+          <h1 className="hero-title">
             College Bus Management System
           </h1>
 
-          <p className="lead">
-            Manage buses, drivers and students in one place.
+          <p className="hero-subtitle">
+            Smart, secure and efficient management of buses, drivers,
+            students and transport fee records.
           </p>
-        </div>
-
-        <div className="row">
-
-          <div className="col-md-4 mb-4">
-            <div className="card shadow">
-              <div className="card-body text-center">
-                <h3>🚌</h3>
-                <h4>Bus Module</h4>
-                <p>
-                  Add and manage buses with routes and capacity.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-4 mb-4">
-            <div className="card shadow">
-              <div className="card-body text-center">
-                <h3>👨‍✈️</h3>
-                <h4>Driver Module</h4>
-                <p>
-                  Store driver details and availability.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-4 mb-4">
-            <div className="card shadow">
-              <div className="card-body text-center">
-                <h3>🎓</h3>
-                <h4>Student Module</h4>
-                <p>
-                  Allocate buses and maintain fee information.
-                </p>
-              </div>
-            </div>
-          </div>
 
         </div>
+
+        {/* Cards */}
+
+        <div className="row mt-5">
+
+          <div className="col-lg-4 col-md-6 mb-4">
+
+            <div className="home-card">
+
+              <div className="icon">🚌</div>
+
+              <h3>Bus Module</h3>
+
+              <p>
+                Add buses, assign routes, manage seating capacity and
+                maintain transport information.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="col-lg-4 col-md-6 mb-4">
+
+            <div className="home-card">
+
+              <div className="icon">👨‍✈️</div>
+
+              <h3>Driver Module</h3>
+
+              <p>
+                Maintain driver profiles, licenses, contact details and
+                availability.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="col-lg-4 col-md-12 mb-4">
+
+            <div className="home-card">
+
+              <div className="icon">🎓</div>
+
+              <h3>Student Module</h3>
+
+              <p>
+                Register students, allocate buses, monitor transport fees
+                and payment status.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </div>
   );

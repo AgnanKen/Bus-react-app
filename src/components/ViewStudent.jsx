@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import NavBar from "./NavBar";
+import Navbar from "./Navbar";
+
 
 const ViewStudent = () => {
   const [students, setStudents] = useState([]);
 
   const fetchStudents = () => {
     axios
-      .get("http://localhost:5000/api/students")
+      .get("http://localhost:4000/view-student")
       .then((res) => {
         setStudents(res.data);
       })
@@ -18,29 +19,29 @@ const ViewStudent = () => {
     fetchStudents();
   }, []);
 
-  const deleteStudent = (id) => {
-    axios
-      .delete(`http://localhost:5000/api/students/${id}`)
-      .then(() => {
-        alert("Student Deleted Successfully");
-        fetchStudents();
-      })
-      .catch((err) => console.log(err));
-  };
+  // const deleteStudent = (id) => {
+  //   axios
+  //     .delete(`http://localhost:5000/api/students/${id}`)
+  //     .then(() => {
+  //       alert("Student Deleted Successfully");
+  //       fetchStudents();
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
-  const removeFee = (id) => {
-    axios
-      .delete(`http://localhost:5000/api/students/${id}/fee`)
-      .then(() => {
-        alert("Bus Fee Removed Successfully");
-        fetchStudents();
-      })
-      .catch((err) => console.log(err));
-  };
+  // const removeFee = (id) => {
+  //   axios
+  //     .delete(`http://localhost:5000/api/students/${id}/fee`)
+  //     .then(() => {
+  //       alert("Bus Fee Removed Successfully");
+  //       fetchStudents();
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <div>
-      {/* <NavBar /> */}
+     <Navbar/>
 
       <div className="container mt-4">
 
