@@ -6,6 +6,7 @@ import './App.css'
 import AddStudent from './components/AddStudent'
 import AddDriver from './components/AddDriver'
 import ViewDriver from './components/ViewDriver'
+import ViewStudent from './components/ViewStudent'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ function App() {
   return (
     <>
       <AddStudent/>
+      <ViewStudent/>
       <AddDriver/>
       <ViewDriver/>
     </>
