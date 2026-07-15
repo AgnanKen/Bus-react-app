@@ -7,7 +7,7 @@ const ViewDriver = () => {
 
   const fetchDrivers = () => {
     axios
-      .get("http://localhost:5000/api/drivers")
+      .get("http://localhost:4000/view-driver")
       .then((res) => {
         setDrivers(res.data);
       })
@@ -18,13 +18,13 @@ const ViewDriver = () => {
     fetchDrivers();
   }, []);
 
-  const deleteDriver = (id) => {
-    axios.delete("http://localhost:5000/api/drivers/${id}").then(() => {
-        alert("Driver Deleted Successfully");
-        fetchDrivers();
-      })
-      .catch((err) => console.log(err));
-  };
+  // const deleteDriver = (id) => {
+  //   axios.delete("http://localhost:5000/api/drivers/${id}").then(() => {
+  //       alert("Driver Deleted Successfully");
+  //       fetchDrivers();
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <div>

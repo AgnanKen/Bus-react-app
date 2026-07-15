@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import NavBar from "./NavBar";
+import Navbar from "./Navbar";
 
 const AddStudent = () => {
   const [buses, setBuses] = useState([]);
@@ -21,7 +21,7 @@ const AddStudent = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/buses")
+      .get("http://localhost:4000/view-student")
       .then((res) => setBuses(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -32,7 +32,7 @@ const AddStudent = () => {
 
   const readValues = () => {
     axios
-      .post("http://localhost:5000/api/students", student)
+      .post("http://localhost:4000/add-student", student)
       .then((res) => {
         alert("Student Added Successfully");
         console.log(res.data);
@@ -42,7 +42,7 @@ const AddStudent = () => {
 
   return (
     <div>
-      {/* <NavBar /> */}
+      <Navbar/>
 
       <div className="container mt-4">
         <div className="row justify-content-center">

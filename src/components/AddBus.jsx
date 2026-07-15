@@ -21,7 +21,7 @@ const AddBus = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:5000/api/drivers")
+            .get("http://localhost:4000/view-bus")
             .then((res) => setDrivers(res.data))
             .catch((err) => console.log(err));
     }, []);
@@ -32,7 +32,7 @@ const AddBus = () => {
 
     const readValues = () => {
         axios
-            .post("http://localhost:5000/api/buses", bus)
+            .post("http://localhost:4000/add-bus", bus)
             .then((res) => {
                 alert("Bus Added Successfully");
                 console.log(res.data);

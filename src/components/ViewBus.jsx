@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import Navbar from "./Navbar";
 
 const ViewBus = () => {
   const [busData, setBusData] = useState([]);
 
   const fetchData = () => {
     axios
-      .get("http://localhost:5000/api/buses")
+      .get("http://localhost:4000/view-bus")
       .then((res) => {
         setBusData(res.data);
       })
@@ -18,34 +18,29 @@ const ViewBus = () => {
     fetchData();
   }, []);
 
-  const deleteBus = (id) => {
-    axios
-      .delete(`http://localhost:5000/api/buses/${id}`)
-      .then(() => {
-        alert("Bus Deleted Successfully");
-        fetchData();
-      })
-      .catch((err) => console.log(err));
-  };
+  // const deleteBus = (id) => {
+  //   axios
+  //     .delete(`http://localhost:5000/api/buses/${id}`)
+  //     .then(() => {
+  //       alert("Bus Deleted Successfully");
+  //       fetchData();
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <div>
-
+      <Navbar />
 
       <div className="container mt-4">
-
         <div className="card shadow">
-
           <div className="card-header bg-primary text-white">
             <h3>View Bus</h3>
           </div>
 
           <div className="card-body">
-
             <table className="table table-bordered table-hover">
-
               <thead className="table-dark">
-
                 <tr>
                   <th>Bus No</th>
                   <th>Name</th>
@@ -59,14 +54,11 @@ const ViewBus = () => {
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
-
               </thead>
 
               <tbody>
-
                 {busData.map((value) => (
                   <tr key={value._id}>
-
                     <td>{value.busNumber}</td>
                     <td>{value.busName}</td>
                     <td>{value.registrationNumber}</td>
@@ -90,18 +82,12 @@ const ViewBus = () => {
                         Delete
                       </button>
                     </td>
-
                   </tr>
                 ))}
-
               </tbody>
-
             </table>
-
           </div>
-
         </div>
-
       </div>
     </div>
   );

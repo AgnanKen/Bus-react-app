@@ -21,7 +21,7 @@ const AddDriver = () => {
 
   const readValues = () => {
     axios
-      .post("http://localhost:5000/api/drivers", driver)
+      .post("http://localhost:4000/add-driver", driver)
       .then((res) => {
         alert("Driver Added Successfully");
         console.log(res.data);
