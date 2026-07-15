@@ -55,7 +55,7 @@ const ViewStudent = () => {
 
             <table className="table table-bordered table-hover">
 
-              <thead className="table-dark">
+              <thead>
 
                 <tr>
                   <th>ID</th>
@@ -99,7 +99,7 @@ const ViewStudent = () => {
                       </button>
 
                       <button
-                        className="btn btn-warning btn-sm"
+                        className="btn-delete"
                         onClick={() => removeFee(value._id)}
                       >
                         Remove Fee

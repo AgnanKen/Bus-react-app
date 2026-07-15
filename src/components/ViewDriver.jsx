@@ -42,7 +42,7 @@ const ViewDriver = () => {
 
             <table className="table table-bordered table-hover">
 
-              <thead className="table-dark">
+              <thead>
 
                 <tr>
                   <th>Driver ID</th>
@@ -74,7 +74,7 @@ const ViewDriver = () => {
 
                     <td>
                       <button
-                        className="btn btn-danger btn-sm"
+                        className="btn-delete"
                         onClick={() => deleteDriver(value._id)}
                       >
                         Delete

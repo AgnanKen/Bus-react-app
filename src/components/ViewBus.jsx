@@ -40,7 +40,7 @@ const ViewBus = () => {
 
           <div className="card-body">
             <table className="table table-bordered table-hover">
-              <thead className="table-dark">
+              <thead>
                 <tr>
                   <th>Bus No</th>
                   <th>Name</th>
@@ -76,7 +76,7 @@ const ViewBus = () => {
 
                     <td>
                       <button
-                        className="btn btn-danger btn-sm"
+                        className="btn-delete"
                         onClick={() => deleteBus(value._id)}
                       >
                         Delete
