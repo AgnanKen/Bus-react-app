@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 
 const ViewStudent = () => {
   const [students, setStudents] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchStudents = () => {
     axios
@@ -28,7 +29,19 @@ const ViewStudent = () => {
       .catch((err) => console.log(err));
   };
 
-
+  const filteredStudents = students.filter(
+    (student) =>
+      student.studentId
+        ?.toString()
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      student.fullName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      student.department?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      student.assignedBusNumber
+        ?.toString()
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()),
+  );
 
   return (
     <div>
@@ -41,6 +54,15 @@ const ViewStudent = () => {
           </div>
 
           <div className="card-body">
+            <div className="mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search by ID, Name, Department, or Bus..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
             <div className="table-responsive">
               <table className="table custom-table">
                 <thead>
@@ -55,12 +77,13 @@ const ViewStudent = () => {
                     <th>Payment</th>
                     <th>Academic Year</th>
                     <th>Status</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  {students.length > 0 ? (
-                    students.map((value) => (
+                  {filteredStudents.length > 0 ? (
+                    filteredStudents.map((value) => (
                       <tr key={value._id}>
                         <td>{value.studentId}</td>
                         <td>{value.fullName}</td>
@@ -73,12 +96,20 @@ const ViewStudent = () => {
                         <td>{value.academicYear}</td>
                         <td>{value.feeStatus}</td>
 
+                        <td>
+                          <button
+                            className="btn-delete me-2"
+                            onClick={() => deleteStudent(value._id)}
+                          >
+                            Delete
+                          </button>
+                        </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
                       <td colSpan="11" className="text-center">
-                        No Students Found
+                        {searchTerm ? "No Students Found" : "No Data Available"}
                       </td>
                     </tr>
                   )}

@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 
 const ViewBus = () => {
   const [busData, setBusData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchData = () => {
     axios
@@ -18,37 +19,52 @@ const ViewBus = () => {
     fetchData();
   }, []);
 
-  // const deleteBus = (id) => {
-  //   axios
-  //     .delete(`http://localhost:4000/delete-bus/${id}`)
-  //     .then(() => {
-  //       alert("Bus Deleted Successfully");
-  //       fetchData();
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const deleteBus = (id) => {
+    axios
+      .delete(`http://localhost:4000/delete-bus/${id}`)
+      .then(() => {
+        alert("Bus Deleted Successfully");
+        fetchData();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const filteredBusData = busData.filter(
+    (bus) =>
+      bus.busNumber
+        ?.toString()
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      bus.busName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      bus.driverId?.driverName
+        ?.toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      bus.routeName?.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   return (
     <div>
       <Navbar />
 
       <div className="container mt-4">
-
         <div className="card shadow">
-
           <div className="card-header">
             <h3>View Buses</h3>
           </div>
 
           <div className="card-body">
+            <div className="mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search by Bus No, Name, Driver, or Route..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
 
             <div className="table-responsive">
-
-              <table
-                className="table custom-table"
-                style={{ minWidth: "1400px" }}
-              >
-
+              <table className="table custom-table">
                 <thead>
                   <tr>
                     <th>Bus No</th>
@@ -61,13 +77,13 @@ const ViewBus = () => {
                     <th>To</th>
                     <th>Distance</th>
                     <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
 
                 <tbody>
-
-                  {busData.length > 0 ? (
-                    busData.map((value) => (
+                  {filteredBusData.length > 0 ? (
+                    filteredBusData.map((value) => (
                       <tr key={value._id}>
                         <td>{value.busNumber}</td>
                         <td>{value.busName}</td>
@@ -86,29 +102,29 @@ const ViewBus = () => {
                         <td>{value.distance} KM</td>
                         <td>{value.status}</td>
 
-            
+                        <td>
+                          <button
+                            className="btn-delete"
+                            onClick={() => deleteBus(value._id)}
+                          >
+                            Delete
+                          </button>
+                        </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
                       <td colSpan="11" className="text-center">
-                        No Buses Found
+                        {searchTerm ? "No Buses Found" : "No Data Available"}
                       </td>
                     </tr>
                   )}
-
                 </tbody>
-
               </table>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 };
