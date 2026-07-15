@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-// import NavBar from "./NavBar";
+import Navbar from "./Navbar";
 
 const ViewDriver = () => {
   const [drivers, setDrivers] = useState([]);
@@ -28,7 +28,7 @@ const ViewDriver = () => {
 
   return (
     <div>
-      {/* <NavBar /> */}
+     <Navbar/>
 
       <div className="container mt-4">
 

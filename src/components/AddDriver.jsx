@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import NavBar from "./NavBar";
+import Navbar from "./Navbar";
+
 
 const AddDriver = () => {
   const [driver, setDriver] = useState({
@@ -30,7 +31,7 @@ const AddDriver = () => {
 
   return (
     <div>
-      {/* <NavBar /> */}
+   <Navbar/>
 
       <div className="container mt-4">
         <div className="row justify-content-center">

@@ -8,6 +8,9 @@ import ViewBus from './components/ViewBus'
 import AddStudent from './components/AddStudent'
 import AddDriver from './components/AddDriver'
 import ViewDriver from './components/ViewDriver'
+import AddBus from './components/AddBus'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './components/Home'
 import ViewStudent from './components/ViewStudent'
 
 function App() {
@@ -15,6 +18,17 @@ function App() {
 
   return (
     <>
+      <BrowserRouter>
+      <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/addbus' element={<AddBus/>}/>
+      <Route path='/adddriver' element={<AddDriver/>}/>
+      <Route path='/viewdriver' element={<ViewDriver/>}/>
+      {/* <Route path='/' element={<Viewb/>}/> */}
+
+      </Routes>
+      </BrowserRouter>
+
       <AddBus/>
       <ViewBus/>
       <AddStudent/>
