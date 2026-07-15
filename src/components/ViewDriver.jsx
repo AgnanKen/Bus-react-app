@@ -18,13 +18,13 @@ const ViewDriver = () => {
     fetchDrivers();
   }, []);
 
-  // const deleteDriver = (id) => {
-  //   axios.delete("http://localhost:5000/api/drivers/${id}").then(() => {
-  //       alert("Driver Deleted Successfully");
-  //       fetchDrivers();
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const deleteDriver = (id) => {
+    axios.delete("http://localhost:5000/api/drivers/:{id}").then(() => {
+        alert("Driver Deleted Successfully");
+        fetchDrivers();
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div>
@@ -40,9 +40,9 @@ const ViewDriver = () => {
 
           <div className="card-body">
 
-            <table className="table table-bordered table-hover">
-
-              <thead>
+              <div className="table-responsive custom-table-container">
+  <table className="table custom-table">
+    <thead>
 
                 <tr>
                   <th>Driver ID</th>
@@ -53,7 +53,6 @@ const ViewDriver = () => {
                   <th>Email</th>
                   <th>Address</th>
                   <th>Status</th>
-                  <th>Action</th>
                 </tr>
 
               </thead>
@@ -72,14 +71,6 @@ const ViewDriver = () => {
                     <td>{value.address}</td>
                     <td>{value.status}</td>
 
-                    <td>
-                      <button
-                        className="btn-delete"
-                        onClick={() => deleteDriver(value._id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
 
                   </tr>
                 ))}
@@ -90,6 +81,7 @@ const ViewDriver = () => {
 
           </div>
 
+        </div>
         </div>
 
       </div>

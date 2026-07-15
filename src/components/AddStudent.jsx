@@ -19,15 +19,21 @@ const AddStudent = () => {
     feeStatus: "Pending",
   });
 
+  // Fetch buses for dropdown
   useEffect(() => {
     axios
-      .get("http://localhost:4000/view-student")
-      .then((res) => setBuses(res.data))
+      .get("http://localhost:4000/view-bus")
+      .then((res) => {
+        setBuses(res.data);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   const inputHandler = (e) => {
-    setStudent({ ...student, [e.target.name]: e.target.value });
+    setStudent({
+      ...student,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const readValues = () => {
@@ -35,6 +41,21 @@ const AddStudent = () => {
       .post("http://localhost:4000/add-student", student)
       .then((res) => {
         alert("Student Added Successfully");
+
+        setStudent({
+          studentId: "",
+          fullName: "",
+          department: "",
+          assignedBusNumber: "",
+          feeId: "",
+          semester: "",
+          amount: "",
+          dueDate: "",
+          paymentMode: "UPI",
+          academicYear: "",
+          feeStatus: "Pending",
+        });
+
         console.log(res.data);
       })
       .catch((err) => console.log(err));
@@ -42,15 +63,15 @@ const AddStudent = () => {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
 
       <div className="container mt-4">
         <div className="row justify-content-center">
-          <div className="col-md-8">
+          <div className="col-lg-8">
 
             <div className="card shadow">
 
-              <div className="card-header bg-primary text-white">
+              <div className="card-header">
                 <h3>Add Student</h3>
               </div>
 
@@ -95,23 +116,23 @@ const AddStudent = () => {
                     <label>Assigned Bus</label>
 
                     <select
-                      className="form-control"
+                      className="form-select"
                       name="assignedBusNumber"
                       value={student.assignedBusNumber}
                       onChange={inputHandler}
                     >
-                      <option>Select Bus</option>
+                      <option value="">Select Bus</option>
 
-                      {buses.map((value) => (
-                        <option
-                          key={value._id}
-                          value={value.busNumber}
-                        >
-                          {value.busNumber}
-                        </option>
-                      ))}
+                      {buses.length > 0 ? (
+                        buses.map((bus) => (
+                          <option key={bus._id} value={bus.busNumber}>
+                            {bus.busNumber} - {bus.busName}
+                          </option>
+                        ))
+                      ) : (
+                        <option disabled>No Buses Available</option>
+                      )}
                     </select>
-
                   </div>
 
                   <div className="col-md-6">
@@ -162,17 +183,16 @@ const AddStudent = () => {
                     <label>Payment Mode</label>
 
                     <select
-                      className="form-control"
+                      className="form-select"
                       name="paymentMode"
                       value={student.paymentMode}
                       onChange={inputHandler}
                     >
-                      <option>UPI</option>
-                      <option>NetBanking</option>
-                      <option>Card</option>
-                      <option>Cash</option>
+                      <option value="UPI">UPI</option>
+                      <option value="NetBanking">Net Banking</option>
+                      <option value="Card">Card</option>
+                      <option value="Cash">Cash</option>
                     </select>
-
                   </div>
 
                   <div className="col-md-6">
@@ -180,8 +200,8 @@ const AddStudent = () => {
                     <input
                       type="text"
                       className="form-control"
-                      name="academicYear"
                       placeholder="2026-2027"
+                      name="academicYear"
                       value={student.academicYear}
                       onChange={inputHandler}
                     />
@@ -191,20 +211,19 @@ const AddStudent = () => {
                     <label>Fee Status</label>
 
                     <select
-                      className="form-control"
+                      className="form-select"
                       name="feeStatus"
                       value={student.feeStatus}
                       onChange={inputHandler}
                     >
-                      <option>Paid</option>
-                      <option>Pending</option>
-                      <option>Exempted</option>
-                      <option>No Transport</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Paid">Paid</option>
+                      <option value="Exempted">Exempted</option>
+                      <option value="No Transport">No Transport</option>
                     </select>
-
                   </div>
 
-                  <div className="col-md-12 text-center mt-3">
+                  <div className="col-12 text-center mt-4">
                     <button
                       className="btn btn-success"
                       onClick={readValues}

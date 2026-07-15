@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 *{
     margin:0;
@@ -21,7 +22,7 @@ body{
     background:#324045;
     border:none;
     border-radius:18px;
-    overflow:hidden;
+    overflow:visible;
     box-shadow:0 15px 35px rgba(0,0,0,.35);
     transition:.35s;
 }
@@ -432,105 +433,247 @@ select option{
 
 }
 
-/* ===========================
-      CUSTOM TABLE
-=========================== */
+/* =====================================
+            PREMIUM TABLE
+===================================== */
 
-.table{
-    color:#fff;
+.table-responsive{
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.table.custom-table{
+    width:100%;
     margin-bottom:0;
     border-collapse:separate;
     border-spacing:0;
+    overflow:hidden;
+    border-radius:18px;
+    background:#324045;
+    font-family:'Inter',sans-serif;
+
+    --bs-table-bg:transparent;
+    --bs-table-striped-bg:transparent;
+    --bs-table-hover-bg:transparent;
+    --bs-table-border-color:#4d6660;
 }
 
 /* Header */
 
-.table thead{
-    background:linear-gradient(90deg,#2B5748,#618764);
-}
+.table.custom-table thead th{
+    background:linear-gradient(90deg,#2B5748,#618764) !important;
+    color:#ffffff !important;
 
-.table thead th{
-    color:#fff;
-    font-weight:600;
-    border:none;
-    padding:16px;
+    font-family:'Poppins',sans-serif;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+
     text-align:center;
-    white-space:nowrap;
+    vertical-align:middle;
+
+    padding:18px 14px;
+
+    border:1px solid #618764 !important;
 }
 
 /* Body */
 
-.table tbody tr{
-    background:#324045;
-    transition:.3s;
+.table.custom-table tbody td{
+    background:#324045 !important;
+    color:#edf6eb !important;
+
+    font-family:'Inter',sans-serif;
+    font-size:15px;
+    font-weight:500;
+
+    letter-spacing:.4px;
+    line-height:1.6;
+
+    text-align:center;
+    vertical-align:middle;
+
+    padding:16px 14px;
+
+    border:1px solid #445a54 !important;
+
+    transition:all .3s ease;
 }
 
-.table tbody td{
-    color:#d9e5d0;
-    border-color:#4d6660;
-    padding:14px;
-    vertical-align:middle;
-    text-align:center;
+/* Alternate Rows */
+
+.table.custom-table tbody tr:nth-child(even) td{
+    background:#2d3a3f !important;
 }
 
 /* Hover */
 
-.table tbody tr:hover{
-    background:#3b4d52;
-    transform:scale(1.003);
+.table.custom-table tbody tr:hover td{
+    background:#3b4d52 !important;
+    color:#ffffff !important;
+    letter-spacing:.6px;
 }
 
-/* Alternate rows */
+/* Rounded Header */
 
-.table tbody tr:nth-child(even){
-    background:#2f3e43;
+.table.custom-table thead th:first-child{
+    border-top-left-radius:18px;
 }
 
-.table tbody tr:nth-child(even):hover{
-    background:#3d5056;
+.table.custom-table thead th:last-child{
+    border-top-right-radius:18px;
 }
 
-/* Rounded table */
+/* Status Text */
 
-.table thead tr th:first-child{
-    border-top-left-radius:12px;
+.custom-table td:nth-last-child(2){
+    font-weight:700;
+    color:#9CB080 !important;
 }
 
-.table thead tr th:last-child{
-    border-top-right-radius:12px;
+/* Long Text */
+
+.custom-table td{
+    white-space:nowrap;
 }
 
-/* Borders */
+/* Scrollbar */
 
-.table-bordered{
-    border:1px solid #618764;
+.table-responsive::-webkit-scrollbar{
+    height:10px;
 }
 
-.table-bordered td,
-.table-bordered th{
-    border:1px solid #4d6660 !important;
+.table-responsive::-webkit-scrollbar-track{
+    background:#273338;
 }
 
-.btn-danger{
-    background:#8B3A3A;
+.table-responsive::-webkit-scrollbar-thumb{
+    background:#618764;
+    border-radius:20px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover{
+    background:#9CB080;
+}
+
+
+
+/* ===========================
+        DELETE BUTTON
+=========================== */
+
+.btn-delete{
+    background:linear-gradient(135deg,#8b3a3a,#b04545);
+    color:#fff;
     border:none;
-    border-radius:8px;
-    transition:.3s;
+    border-radius:10px;
+    padding:8px 18px;
+    font-size:14px;
+    font-weight:600;
+    transition:.35s ease;
+    cursor:pointer;
 }
 
-.btn-danger:hover{
-    background:#b04545;
-    box-shadow:0 0 10px rgba(176,69,69,.45);
+.btn-delete:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(176,69,69,.35);
 }
 
-.card{
-    overflow:hidden;
+/* ===========================
+      REMOVE FEE BUTTON
+=========================== */
+
+.btn-remove-fee{
+    background:linear-gradient(135deg,#2B5748,#618764);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:8px 18px;
+    font-size:14px;
+    font-weight:600;
+    transition:.35s ease;
+    cursor:pointer;
 }
 
-.card-header{
-    background:linear-gradient(90deg,#2B5748,#618764)!important;
+.btn-remove-fee:hover{
+    transform:translateY(-2px);
+    background:linear-gradient(135deg,#618764,#9CB080);
+    color:#273338;
+    box-shadow:0 8px 20px rgba(156,176,128,.35);
+}
+/* ===========================
+        TABLE FONT
+=========================== */
+
+.custom-table{
+    font-family:'Inter',sans-serif;
 }
 
-.card-body{
-    background:#324045;
+.custom-table thead th{
+    padding:12px 8px;
+    font-size:13px;
+}
+
+.custom-table tbody td{
+    padding:10px 8px;
+    font-size:13px;
+}
+
+/* Nice hover animation */
+
+ .custom-table tbody tr:hover td{
+    color:#ffffff !important;
+    letter-spacing:.5px;
+} 
+
+/* ===========================
+      RESPONSIVE TABLE
+=========================== */
+
+.table-responsive{
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    border-radius:15px;
+}
+
+.table.custom-table{
+    min-width:1400px;
+}
+
+.table.custom-table th,
+.table.custom-table td{
+    white-space:nowrap;
+}
+
+.table.custom-table th:last-child,
+.table.custom-table td:last-child{
+    min-width:140px;
+    text-align:center;
+}
+
+.btn-delete{
+    display:inline-block;
+    min-width:90px;
+}
+
+/* Custom Scrollbar */
+
+.table-responsive::-webkit-scrollbar{
+    height:10px;
+}
+
+.table-responsive::-webkit-scrollbar-track{
+    background:#273338;
+    border-radius:20px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb{
+    background:#618764;
+    border-radius:20px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover{
+    background:#9CB080;
 }
