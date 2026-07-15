@@ -8,6 +8,7 @@ import ViewBus from './components/ViewBus'
 import AddStudent from './components/AddStudent'
 import AddDriver from './components/AddDriver'
 import ViewDriver from './components/ViewDriver'
+import ViewStudent from './components/ViewStudent'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +18,7 @@ function App() {
       <AddBus/>
       <ViewBus/>
       <AddStudent/>
+      <ViewStudent/>
       <AddDriver/>
       <ViewDriver/>
     </>
