@@ -5,6 +5,9 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import AddBus from './components/AddBus'
 import ViewBus from './components/ViewBus'
+import AddStudent from './components/AddStudent'
+import AddDriver from './components/AddDriver'
+import ViewDriver from './components/ViewDriver'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +16,9 @@ function App() {
     <>
       <AddBus/>
       <ViewBus/>
+      <AddStudent/>
+      <AddDriver/>
+      <ViewDriver/>
     </>
   )
 }
